@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 /**
  * Created by jfreire on 07.07.17.
  */
-public class IntStreamSum {
+public class FindAnyStream {
 
     public static void main(String[] args) {
 
@@ -17,12 +17,8 @@ public class IntStreamSum {
         sts.add("3");
         sts.add("4");
 
-        IntStream stream = sts.stream().flatMapToInt(s -> IntStream.of(Integer.parseInt(s)));
-
-        //IntStream stream2 = sts.stream().map(s -> Integer.parseInt(s));
-
-
-        System.out.println(stream.sum());
+        System.out.println(sts.stream().findAny().orElse("Mier"));
+        System.out.println(sts.parallelStream().findFirst().orElse("Mier"));
 
     }
 }
