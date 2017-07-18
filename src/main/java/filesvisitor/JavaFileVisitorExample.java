@@ -47,14 +47,14 @@ public class JavaFileVisitorExample implements FileVisitor {
         //walkFile
         Instant start = Instant.now();
         Files.walkFileTree(Paths.get("/"), new JavaFileVisitorExample());
-        System.out.println("Time taken wile fileVisitor: " + Duration.between(start, Instant.now());
+        System.out.println("Time taken wile fileVisitor: " + Duration.between(start, Instant.now()));
         //
         start = Instant.now();
         new StreamsFileCounter().walkThisWay("/");
-        System.out.println("Time taken streams: " + Duration.between(start, Instant.now());
+        System.out.println("Time taken streams: " + Duration.between(start, Instant.now()));
         //
         start = Instant.now();
-        System.out.println("Time taken directoryStream: " + Duration.between(start, Instant.now());
+        System.out.println("Time taken directoryStream: " + Duration.between(start, Instant.now()));
 
 
     }
@@ -62,7 +62,7 @@ public class JavaFileVisitorExample implements FileVisitor {
     /**
      * Recursive task
      */
-    static class StreamsFileCounter<Integer> extends RecursiveTask<Integer>
+    static class StreamsFileCounter<T> extends RecursiveTask<T>
 
     {
         public void walkThisWay(String s) {
@@ -71,9 +71,9 @@ public class JavaFileVisitorExample implements FileVisitor {
         }
 
         @Override
-        protected Integer compute() {
+        protected T compute() {
 
-            return
+            return (T) new Integer(0);
 
         }
 
@@ -95,7 +95,7 @@ public class JavaFileVisitorExample implements FileVisitor {
 
             dirs.forEach(d -> d.toFile().listFiles());
 
-            System.out.println("compute walkESWay = " + service.invokeAll(dirs));
+           // System.out.println("compute walkESWay = " + service.invokeAll(dirs));
         }
 
         @Override
@@ -115,9 +115,9 @@ public class JavaFileVisitorExample implements FileVisitor {
                 if (f.isFile())
                     count.incrementAndGet();
                 else if (f.isDirectory()) {
-                    Stream.of(f.listFiles()).forEach(this.walk());
+//                    Stream.of(f.listFiles()).forEach(this.walk());
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 //ignore
             }
         }
