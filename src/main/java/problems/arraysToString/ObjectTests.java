@@ -20,6 +20,21 @@ public class ObjectTests {
     long[] longs = {System.currentTimeMillis(), System.nanoTime()};
     String[] words = "The quick brown fox jumps over the lazy dog".split(" ");
 
+    /**
+     * Running with
+     * -ea -Xbootclasspath/p:target/classes/
+     * and a new Object.java class to update the properties.
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        Object o = new ObjectTests();
+
+        String[] words = "The quick brown fox jumps over the lazy dog".split(" ");
+
+        System.out.println("words.toString() = " + words.toString());
+    }
+
     @Test
     public void testToString() throws IllegalAccessException {
         Map<String, Object> arrays = new LinkedHashMap<>();
@@ -29,21 +44,7 @@ public class ObjectTests {
     }
 
     @Test
-    public void test(){
+    public void test() {
         Assert.assertTrue(true);
-    }
-
-    /**
-     * Running with
-     * -ea -Xbootclasspath/p:target/classes/
-     * and a new Object.java class to update the properties.
-     * @param args
-     */
-    public static void main(String[] args) {
-        Object o = new ObjectTests();
-
-        String[] words = "The quick brown fox jumps over the lazy dog".split(" ");
-
-        System.out.println("words.toString() = " + words.toString());
     }
 }
